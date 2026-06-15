@@ -1,30 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Tasca S3.01 - Consum de dades d'API amb Fetch i Axios </title>
+    <title>Tasca S3.01 - Consum de dades d'API amb Fetch i Axios</title>
 </head>
 <body>
-    <header>
-        <h1> FETCH AND AXIOS by Albert Muntal Perez </h1>
-    </header>
 
-    <main>
-        <div id="selector" class="selectors">
-            <select name = "API" id= "api-select">
-                <option value = " "> Please choose an option </option>
-                <option value = "fetch"> Use fetch </option>
- 
-            </select>
+    <div id="app">
 
-        </div>
-     
-    </main>
+        <header>
+            <h1>FETCH AND AXIOS</h1>
+        </header>
 
-    <footer>
+        <main>
 
-    </footer>
+            <section id = "controls" class = "controls-section">
+                
+                <div class = "control-group">
+                    <label for = "api-select"> Choose a technology: </label>
+                    <select name = "API" id= "api-select">
+                        <option value = ""> Please choose an option </option>
+                        <option value = "fetch"> Use Fetch </option>
+                        <option value = "axios"> Use Axios </option> </select>
+                </div>
+
+                <div class = "control-group">
+                    <input type = "text" id = "search-input" placeholder = "Search...">
+                </div>
+
+                <div class= "control-group">
+                    <button type= "button" id= "btn-get-data"> GET DATA </button>
+                </div>
+
+            </section>
+
+            <section id= "content-area">
+                
+                <p id= "loading-status" class= "status-message"> Loading data... </p>
+
+                <p id="error-message" class= "error-message" hidden> An error has ocurred, please try again. </p>
+
+                <div id= "results-container" class="results-grid"> </div>
+
+            </section>
+
+            <nav id= "pagination" aria-label= "Paginació de resultats">
+                <button type= "button" id= "btn-prev" disabled> Previous </button>
+                <span id="page-info"> Page 1 </span>
+                <button type="button" id="btn-next"> Next </button>
+            </nav>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2026 - Albert Muntal Perez</p>
+        </footer>
+
+    </div>
 
 </body>
 </html>
