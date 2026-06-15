@@ -12,6 +12,23 @@ const errorElement = document.getElementById("error-message")
 const resultsContainer = document.getElementById("results-container")
 const paginationContainer = document.getElementById("pagination")
 
+fetchButton.addEventListener("click", fetchData());
+
+function showLoading(){
+    loadingElement.hidden = false;
+}
+
+function hideLoading(){
+    loadingElement.hidden = true;
+}
+
+function showError(message) {
+    errorElement.hidden = false
+}
+
+function hideError() {
+    errorElement.hidden = false
+}
 
 
 
