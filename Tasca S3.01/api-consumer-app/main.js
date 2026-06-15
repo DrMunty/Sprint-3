@@ -39,9 +39,9 @@ async function fetchData() {
 
     try {
         if (useAxios) {
-            fetchDataWithAxios()
+            fetchDataWithAxios(searchTerm)
         } else {
-            fetchDataWithFetch();
+            fetchDataWithFetch(searchTerm);
         }
     } catch (error) {
         // ... (Gestiona errors inesperats si s'escapen de les funcions específiques de Fetch/Axios)
@@ -60,7 +60,35 @@ function setupPagination(totalItems) {
 }
 
 async function fetchDataWithFetch(searchTerm) {
+
+    try {
+        const items = {
+           _page: currentPage,
+           _limit: itemsPerPage,
+           q: searchTerm
+        }
+        const searchParams = new URLSearchParams(items);
+        const queryString = searchParams.toString()
+        const urlWithParams = `${API_URL}?${queryString}`
+        const response = await fetch(urlWithParams)
+
+        if (!response.ok){
+            throw new Error ("Could not fetch resource");
+        }
+
+        const data = await response.json();
+
+        const totalItems = parseInt(response.headers.get('X-Total-Count'), 10) || 0;
+
+        displayResults(data,totalItems)
+    }
+
+    catch(error){
+        console.error(error);
+    }
 }
+
+
 async function fetchDataWithAxios(searchTerm) {
 }
 
