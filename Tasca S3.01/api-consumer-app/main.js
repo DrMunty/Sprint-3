@@ -12,7 +12,7 @@ const errorElement = document.getElementById("error-message")
 const resultsContainer = document.getElementById("results-container")
 const paginationContainer = document.getElementById("pagination")
 
-fetchButton.addEventListener("click", fetchData());
+fetchButton.addEventListener("click", fetchData);
 
 function showLoading(){
     loadingElement.hidden = false;
@@ -27,7 +27,7 @@ function showError(message) {
 }
 
 function hideError() {
-    errorElement.hidden = false
+    errorElement.hidden = true
 }
 
 async function fetchData() {
@@ -39,9 +39,9 @@ async function fetchData() {
 
     try {
         if (useAxios) {
-            fetchDataWithAxios(searchTerm)
+            await fetchDataWithAxios(searchTerm)
         } else {
-            fetchDataWithFetch(searchTerm);
+            await fetchDataWithFetch(searchTerm);
         }
     } catch (error) {
         // ... (Gestiona errors inesperats si s'escapen de les funcions específiques de Fetch/Axios)
