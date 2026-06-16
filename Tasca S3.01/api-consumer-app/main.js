@@ -48,6 +48,7 @@ async function fetchData() {
     } finally {
         hideLoading();
     }
+}
 
 
 function displayResults(items, totalItems) {
@@ -74,8 +75,24 @@ function displayResults(items, totalItems) {
 }
 
 function setupPagination(totalItems) {
+    paginationContainer.textContent = ""
+    const totalPages = Math.ceil(totalItems/itemsPerPage)
+    for (let i = 1; i <= totalPages; i++){
+        const button = document.createElement("button");
+        button.classList.add("pagination-button");
+        button.textContent = i
 
-}
+        if (i === currentPage){
+            button.disabled = true;
+        }
+
+        button.addEventListener("click", () => {
+            currentPage = i;
+            fetchData();
+        });
+        
+        paginationContainer.appendChild(button)
+    }
 }
 
 async function fetchDataWithFetch(searchTerm) {
