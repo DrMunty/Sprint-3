@@ -51,6 +51,16 @@ async function fetchData() {
 
 
 function displayResults(items, totalItems) {
+    resultsContainer = " "
+
+    if (items.length === 0){
+        return resultsContainer.textContent = "No s'han trobat results" 
+    }
+
+    
+
+
+
 
 }
 
@@ -90,6 +100,29 @@ async function fetchDataWithFetch(searchTerm) {
 
 
 async function fetchDataWithAxios(searchTerm) {
+
+    try {
+        const response = await axios.get(API_URL, {
+            params: {
+            _page: currentPage,
+            _limit: itemsPerPage,
+            q: searchTerm
+        }
+    });
+    
+    const data = response.data;
+
+    const totalItems = parseInt(response.headers['x-total-count'], 10) || 0;
+    
+    displayResults(data, totalItems)
+
+    } catch (error) {
+        console.error("An error ocurred with Axios", error);
+
+        const errorMessage = error.response?.statusText || error.message;
+
+        showError(`Error: ${errorMessage}`)
+    }
 }
 
 
