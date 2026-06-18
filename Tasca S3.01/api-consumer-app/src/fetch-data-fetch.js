@@ -2,10 +2,8 @@ import { state } from "./variables-and-consts";
 import { API_URL } from "./variables-and-consts";
 import { displayResults } from "./display-results";
 import { showError } from "./status-functions";
-import { fetchData } from "./fetch-data";
 
-
-export async function fetchDataWithFetch(searchTerm) {
+export async function fetchDataWithFetch(searchTerm, onPageChange) {
 
     try {
         const items = {
@@ -26,7 +24,7 @@ export async function fetchDataWithFetch(searchTerm) {
 
         const totalItems = parseInt(response.headers.get('X-Total-Count'), 10) || 0;
 
-        displayResults(data,totalItems, fetchData)
+        displayResults(data,totalItems, onPageChange)
     }
 
     catch(error){

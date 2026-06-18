@@ -14,8 +14,6 @@ export async function fetchData() {
     const searchTerm = searchInput.value
     const useAxios = apiSelector.value === "axios"
 
-    state.currentPage = 1
-
     resultsContainer.textContent = "";
     paginationContainer.textContent = "";
     hideError();

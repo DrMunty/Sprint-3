@@ -1,5 +1,4 @@
 export const API_URL = 'https://jsonplaceholder.typicode.com/posts';
-export let currentPage = 1;
 export const state = {
     currentPage: 1,
     itemsPerPage: 10
