@@ -8,7 +8,7 @@ import { hideLoading } from "./status-functions";
 import { showLoading } from "./status-functions";
 import { fetchDataWithFetch } from "./fetch-data-fetch";
 import { fetchDataWithAxios } from "./fetch-data-axios";
-import { state } from "./variables-and-consts";
+
 
 export async function fetchData() {
     const searchTerm = searchInput.value
