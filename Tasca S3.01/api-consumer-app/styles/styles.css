@@ -126,6 +126,7 @@ label {
     padding: 1rem;
     border-radius: var(--radius);
     border-left: 4px solid var(--error-color);
+    border-right: 4px solid var(--error-color);
     margin: 1rem 0;
     font-weight: 500;
     text-align: center;
@@ -153,7 +154,7 @@ label {
 .card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow);
-    border-color: rgba(37, 99, 235, 0.3);
+    border-color: var(--primary-color);
 }
 
 .card h3 {
@@ -198,8 +199,14 @@ label {
 }
 
 #page-info {
+    
     font-weight: 600;
     color: var(--text-muted);
+}
+
+footer {
+    margin-top: 3rem;
+    text-align: center;
 }
 
 @keyframes gradientMove {
